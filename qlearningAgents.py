@@ -39,6 +39,23 @@ class QLearningAgent(ReinforcementAgent):
         ReinforcementAgent.__init__(self, **args)
 
         "*** YOUR CODE HERE ***"
+        # for _ in range(0,self.iterations):
+        #   tmpValues = util.Counter()
+        #   for state in self.mdp.getStates():
+        #     if self.mdp.isTerminal(state):
+        #       tmpValues[state] = 0
+        #     else:
+        #       maxvalue = float("-inf")
+        #       for action in self.mdp.getPossibleActions(state):
+        #         total = 0
+        #         for nextState, prob in self.mdp.getTransitionStatesAndProbs(state,action):
+        #           total += prob * (self.mdp.getReward(state,action,nextState) + (self.discount*self.values[nextState]))
+        #         maxvalue = max(total, maxvalue)
+        #         tmpValues[state] = maxvalue
+        #   self.values = tmpValues
+
+        return (1-self.alpha)*qval + self.alpha * (reward + self.discount * max(qval))
+
 
     def getQValue(self, state, action):
         """
