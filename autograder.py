@@ -191,6 +191,8 @@ def runTest(testName, moduleDict, printTestCase=False):
 
     testDict = testParser.TestParser(testName + ".test").parse()
     solutionDict = testParser.TestParser(testName + ".solution").parse()
+    test_out_file = os.path.join('%s.test_output' % testName)
+    testDict['test_out_file'] = test_out_file
     testClass = getattr(projectTestClasses, testDict['class'])
     testCase = testClass(question, testDict)
 
